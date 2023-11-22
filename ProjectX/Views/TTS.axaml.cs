@@ -51,8 +51,8 @@ public partial class TTS : Window
         ThreadUpdateUI.Start();
         var client = new MongoClient(connectionString);
         var database = client.GetDatabase("ProjectX");
-        var collection = database.GetCollection<BsonDocument>("USERS");
-        var filter = Builders<BsonDocument>.Filter.Eq("username", username);
+        var collection = database.GetCollection<BsonDocument>("Users");
+        var filter = Builders<BsonDocument>.Filter.Eq("Username", username);
         var userDocument = collection.Find(filter).FirstOrDefault();
         openFileDialog = new OpenFileDialog(); // Initialize openFileDialog in the constructor
         Nguoidoc.SelectedIndex = 0; // Chọn lựa chọn đầu tiên
