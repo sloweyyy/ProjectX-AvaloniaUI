@@ -1,10 +1,6 @@
-using System;
-using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
-using Avalonia.Markup.Xaml;
 using MongoDB.Driver;
-using BCrypt.Net;
 
 namespace ProjectX.Views
 {
@@ -47,7 +43,7 @@ namespace ProjectX.Views
 
                     // You can open the main window or perform other actions here.
                     // Open the main window
-                    TTS mainWindow = new TTS(selectedUsername);
+                    TexttoSpeak mainWindow = new TexttoSpeak(selectedUsername);
                     mainWindow.Show();
 
                     // Close the login window

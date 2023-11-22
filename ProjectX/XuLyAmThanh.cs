@@ -8,6 +8,7 @@ using System.Threading;
 using System.Windows;
 using Avalonia.Controls;
 using Avalonia.Platform;
+using Avalonia.Threading;
 
 namespace ProjectX
 {
@@ -86,7 +87,7 @@ namespace ProjectX
                 DownFileM3U8toMP3(getTTS_URL(text), fname + ".mp3");
                 this.processNow = 100;
                 this.processMes = "Đã tải xong file -> " + fname + ".mp3";
-                ShowMessage("Thông báo", "Đã tải xong file -> " + fname + ".mp3");
+                ShowMessage("Thông báo", "Đã tải xong file");
             }
         }
 
@@ -400,8 +401,11 @@ namespace ProjectX
 
         public void ShowMessage(string title, string message)
         {
-            var messageBox = new CustomMessageBox(title, message);
-            messageBox.ShowDialog(messageBox);
+            Dispatcher.UIThread.InvokeAsync(() =>
+            {
+                var messageBox = new CustomMessageBox(title, message);
+                messageBox.Show();
+            });
         }
     }
 }

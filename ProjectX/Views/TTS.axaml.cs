@@ -26,7 +26,7 @@ using MongoDB.Driver;
 
 namespace ProjectX;
 
-public partial class TTS : Window
+public partial class TexttoSpeak : Window
 {
     string path = Directory.GetCurrentDirectory();
     string[] arrGiong = { "Nữ miền Nam", "Nữ miền Bắc", "Nam miền Nam", "Nam miền Bắc" };
@@ -40,8 +40,9 @@ public partial class TTS : Window
     string keylone = "";
     private const string connectionString = "mongodb+srv://slowey:tlvptlvp@projectx.3vv2dfv.mongodb.net/";
     private OpenFileDialog openFileDialog; // Declare openFileDialog at the class level
+    private volatile bool keepUpdatingUI = true; // A flag to control the while loop
 
-    public TTS(string username)
+    public TexttoSpeak(string username)
     {
         InitializeComponent();
         string apiKey = GetApiKeyByUsername(username); // Sử dụng hàm để lấy apiKey từ cơ sở dữ liệu
@@ -143,17 +144,28 @@ public partial class TTS : Window
     private void UpdateUI()
     {
         string textPre = "";
-        while (true)
+        while (keepUpdatingUI)
         {
-            Dispatcher.UIThread.Invoke(() =>
+            Dispatcher.UIThread.InvokeAsync(() =>
             {
+                if (!keepUpdatingUI) return; // Check the flag again after being scheduled
+
                 if (Text.Text != textPre)
                 {
                     Kytu.Content = "Ký tự đã nhập: " + Text.Text.Length.ToString();
                     textPre = Text.Text;
                 }
             });
-            Thread.Sleep(200);
+            Thread.Sleep(200); // You might want to adjust the sleep time
+        }
+    }
+
+    public void StopUpdatingUI()
+    {
+        keepUpdatingUI = false;
+        if (ThreadUpdateUI != null && ThreadUpdateUI.IsAlive)
+        {
+            ThreadUpdateUI.Join(); // Wait for the thread to stop
         }
     }
 
@@ -365,6 +377,12 @@ public partial class TTS : Window
 
             Thread.Sleep(2000);
         }
+    }
+
+    protected override void OnClosed(EventArgs e)
+    {
+        base.OnClosed(e);
+        StopUpdatingUI();
     }
 
     public void ShowMessage(string title, string message)

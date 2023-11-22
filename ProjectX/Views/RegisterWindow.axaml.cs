@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
@@ -6,6 +7,7 @@ using Avalonia.Markup.Xaml;
 using MongoDB.Driver;
 using MongoDB.Bson;
 using BCrypt.Net;
+using RestSharp;
 
 namespace ProjectX.Views
 {
@@ -71,7 +73,7 @@ namespace ProjectX.Views
             }
         }
 
-        private void RegisterButton_Click(object sender, RoutedEventArgs e)
+        private async void RegisterButton_Click(object sender, RoutedEventArgs e)
         {
             string username = UsernameTextBox.Text;
             string apiKey = ApiKeyTextBox.Text;
@@ -85,6 +87,13 @@ namespace ProjectX.Views
                 }
                 else
                 {
+                    bool isKeyValid = await CheckKeyAsync(apiKey);
+                    if (!isKeyValid)
+                    {
+                        ShowMessage("Lỗi", "API Key không hợp lệ.");
+                        return;
+                    }
+
                     if (Register(username, apiKey, password))
                     {
                         ShowMessage("Thông báo", "Đăng ký thành công.");
@@ -104,12 +113,31 @@ namespace ProjectX.Views
             }
         }
 
+
         private void BackToLoginButton_Click(object sender, RoutedEventArgs e)
         {
             // Close the current window and open the login window
             this.Close();
             LoginWindow loginWindow = new LoginWindow();
             loginWindow.Show();
+        }
+
+        private async Task<bool> CheckKeyAsync(string key)
+        {
+            var client = new RestClient("https://api.zalo.ai/v1/tts/synthesize");
+            var request = new RestRequest();
+            request.Method = Method.Post;
+            request.AddHeader("apikey", key);
+            request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
+
+            var response = await client.ExecuteAsync(request);
+
+            if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+            {
+                return false;
+            }
+
+            return true;
         }
 
 

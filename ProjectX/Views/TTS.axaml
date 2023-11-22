@@ -1,6 +1,6 @@
 ﻿<Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        x:Class="ProjectX.TTS"
+        x:Class="ProjectX.TexttoSpeak"
         Title="TTS" Width="728" Height="377"
         Background="#202025">
 
@@ -36,19 +36,21 @@
         <Button x:Name="Run" Content="Đọc" HorizontalAlignment="Left" Height="24" Margin="10,179,0,0"
                 VerticalAlignment="Top" Width="199" Click="_run_Click" Background="#202123" Foreground="White"
                 FontFamily="Segoe UI Semibold" FontSize="12" BorderBrush="#34a853" Grid.ColumnSpan="3"
-                Grid.Column="0" />
-        <Button x:Name="Download" Content="Download" HorizontalAlignment="Left" Height="24" Margin="10,206,0,0"
+                Grid.Column="0" HorizontalContentAlignment="Center"/>
+        <Button x:Name="Download" Content="Download" HorizontalAlignment="Left" Height="24" Margin="10,210,0,0"
                 VerticalAlignment="Top" Width="199" FontSize="12" Click="_download_Click" Background="#202123"
                 BorderBrush="#4285f4" Grid.ColumnSpan="3"
-                Grid.Column="0" />
-        <Button x:Name="Stop" Content="Dừng" HorizontalAlignment="Left" Height="24" Margin="10,232,0,0"
+                Grid.Column="0"
+                HorizontalContentAlignment="Center"/>
+        <Button x:Name="Stop" Content="Dừng" HorizontalAlignment="Left" Height="24" Margin="10,241,0,0"
                 VerticalAlignment="Top" Width="199" Click="_stop_Click" Foreground="White" Background="#202123"
                 FontSize="12" FontFamily="Segoe UI Semibold" BorderBrush="#ea4335" Grid.ColumnSpan="3"
-                Grid.Column="0" />
-        <Button x:Name="BtnOpenFile" Content="Mở file" Click="BtnOpenFile_Click" Height="24" Margin="10,257,0,0"
+                Grid.Column="0" HorizontalContentAlignment="Center"/>
+        <Button x:Name="BtnOpenFile" Content="Mở file" Click="BtnOpenFile_Click" Height="24" Margin="10,272,0,0"
                 VerticalAlignment="Top" Width="199" FontFamily="Segoe UI Semibold" FontSize="12" Background="#202123"
                 BorderBrush="#fbbc05" HorizontalAlignment="Left" Grid.ColumnSpan="3"
-                Grid.Column="0" />
+                Grid.Column="0" HorizontalContentAlignment="Center"/>
+
         <!-- Textbox -->
         <TextBox Margin="95,0,10,0" TextWrapping="Wrap" AcceptsReturn="True" x:Name="Text" Foreground="#FFFFFF"
                  Text="Nhập văn bản ở đây" BorderBrush="#FFFAFAFA" Background="#41414b" Height="227"
