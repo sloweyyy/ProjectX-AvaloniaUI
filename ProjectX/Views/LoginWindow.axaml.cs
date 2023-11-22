@@ -41,7 +41,7 @@ namespace ProjectX.Views
             {
                 User user = GetUser(selectedUsername);
 
-                if (VerifyPassword(enteredPassword, user.PasswordHash))
+                if (VerifyPassword(enteredPassword, user.Password))
                 {
                     // Password is valid, grant access
 

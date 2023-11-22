@@ -18,10 +18,9 @@ namespace ProjectX
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
                 // Create and show the LoginWindow
-                // LoginWindow loginWindow = new LoginWindow();
-                // loginWindow.Show();
-                TTS mainWindow = new TTS("tlvptlvp");
-                mainWindow.Show();
+                LoginWindow loginWindow = new LoginWindow();
+                loginWindow.Show();
+
 
                 // Set the main window's DataContext, but don't show it yet
             }

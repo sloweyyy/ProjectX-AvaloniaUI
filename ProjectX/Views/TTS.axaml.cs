@@ -55,6 +55,8 @@ public partial class TTS : Window
         var filter = Builders<BsonDocument>.Filter.Eq("username", username);
         var userDocument = collection.Find(filter).FirstOrDefault();
         openFileDialog = new OpenFileDialog(); // Initialize openFileDialog in the constructor
+        Nguoidoc.SelectedIndex = 0; // Chọn lựa chọn đầu tiên
+        Tocdo.SelectedIndex = 0; // Chọn lựa chọn đầu tiên
     }
 
     private async void OpenFileButton_Click(object sender, RoutedEventArgs e)
@@ -81,14 +83,14 @@ public partial class TTS : Window
                 .GetDatabase("ProjectX"); // Thay "your-database-name" bằng tên cơ sở dữ liệu MongoDB của bạn
         IMongoCollection<BsonDocument>
             collection =
-                database.GetCollection<BsonDocument>("USERS"); // Thay "Users" bằng tên bảng/collection MongoDB của bạn
+                database.GetCollection<BsonDocument>("Users"); // Thay "Users" bằng tên bảng/collection MongoDB của bạn
 
-        var filter = Builders<BsonDocument>.Filter.Eq("username", username);
+        var filter = Builders<BsonDocument>.Filter.Eq("Username", username);
         var result = collection.Find(filter).FirstOrDefault();
 
         if (result != null)
         {
-            apiKey = result.GetValue("apikey").AsString; // Lấy giá trị của trường "apikey" từ kết quả truy vấn
+            apiKey = result.GetValue("ApiKey").AsString; // Lấy giá trị của trường "apikey" từ kết quả truy vấn
         }
 
         return apiKey;
@@ -305,7 +307,6 @@ public partial class TTS : Window
             ThreadBackround.Start();
         }
     }
-
 
 
     private void Window_Loaded(object sender, RoutedEventArgs e)
