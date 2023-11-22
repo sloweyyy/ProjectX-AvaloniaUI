@@ -1,0 +1,34 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="380" d:DesignHeight="270"
+        x:Class="ProjectX.Views.LoginWindow"
+        Title="Login"
+        Background="#202123"
+        Width="380" Height="270"
+        WindowStartupLocation="CenterScreen"
+        Icon="/Assets/AppIcon.ico">
+    <StackPanel Orientation="Vertical" Margin="10">
+        <Label Content="Đăng Nhập" FontWeight="Bold" FontSize="20" VerticalAlignment="Center"
+               HorizontalAlignment="Center" />
+
+        <!-- Existing User Selection -->
+        <Label Content="Chọn Tài Khoản:" FontWeight="Bold" Margin="30,0,30,10" />
+        <ComboBox x:Name="UserComboBox" Margin="30,0,30,10" Foreground="#d8d9de" Width="300" HorizontalAlignment="Left" />
+
+        <!-- Password Input -->
+        <Label Content="Nhập Mật Khẩu:" FontWeight="Bold" Margin="30,0,30,10" Width="300" />
+        <TextBox Name="PasswordBox" Margin="30,0,30,10" VerticalAlignment="Center" PasswordChar="●"
+                 Foreground="#d8d9de" Width="300" HorizontalAlignment="Left" />
+
+
+        <!-- Login and Register Buttons -->
+        <Button Content="Đăng nhập" Click="CheckLogin_Click" Background="#202123" Margin="30,0,30,10"
+                BorderBrush="#4285f4" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Width="144" />
+        <Button Content="Đăng Ký" Click="OpenRegisterForm_Click" Background="#202123" Margin="30,0,30,10"
+                BorderBrush="#ea4335" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Width="144" />
+
+        <!-- Additional Buttons -->
+    </StackPanel>
+</Window>
