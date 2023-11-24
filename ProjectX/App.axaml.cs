@@ -20,6 +20,8 @@ namespace ProjectX
                 // Create and show the LoginWindow
                 LoginWindow loginWindow = new LoginWindow();
                 loginWindow.Show();
+                // TexttoSpeak mainWindow = new TexttoSpeak("hi");
+                // mainWindow.Show();
 
 
                 // Set the main window's DataContext, but don't show it yet
