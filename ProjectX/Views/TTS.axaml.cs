@@ -45,15 +45,15 @@ public partial class TexttoSpeak : Window
     public TexttoSpeak(string username)
     {
         InitializeComponent();
-        string apiKey = GetApiKeyByUsername(username); // Sử dụng hàm để lấy apiKey từ cơ sở dữ liệu
+        var apiKey = GetApiKeyByUsername(username); // Sử dụng hàm để lấy apiKey từ cơ sở dữ liệu
         Apikey.Text = apiKey;
         ThreadUpdateUI = new Thread(() => UpdateUI());
         ThreadUpdateUI.IsBackground = true;
         ThreadUpdateUI.Start();
         var client = new MongoClient(connectionString);
         var database = client.GetDatabase("ProjectX");
-        var collection = database.GetCollection<BsonDocument>("Users");
-        var filter = Builders<BsonDocument>.Filter.Eq("Username", username);
+        var collection = database.GetCollection<BsonDocument>("users");
+        var filter = Builders<BsonDocument>.Filter.Eq("username", username);
         var userDocument = collection.Find(filter).FirstOrDefault();
         openFileDialog = new OpenFileDialog(); // Initialize openFileDialog in the constructor
         Nguoidoc.SelectedIndex = 0; // Chọn lựa chọn đầu tiên
@@ -84,14 +84,14 @@ public partial class TexttoSpeak : Window
                 .GetDatabase("ProjectX"); // Thay "your-database-name" bằng tên cơ sở dữ liệu MongoDB của bạn
         IMongoCollection<BsonDocument>
             collection =
-                database.GetCollection<BsonDocument>("Users"); // Thay "Users" bằng tên bảng/collection MongoDB của bạn
+                database.GetCollection<BsonDocument>("users");
 
-        var filter = Builders<BsonDocument>.Filter.Eq("Username", username);
+        var filter = Builders<BsonDocument>.Filter.Eq("username", username);
         var result = collection.Find(filter).FirstOrDefault();
 
         if (result != null)
         {
-            apiKey = result.GetValue("ApiKey").AsString; // Lấy giá trị của trường "apikey" từ kết quả truy vấn
+            apiKey = result.GetValue("apikey").AsString; // Lấy giá trị của trường "apikey" từ kết quả truy vấn
         }
 
         return apiKey;

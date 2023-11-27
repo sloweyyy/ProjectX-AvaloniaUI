@@ -36,9 +36,9 @@ namespace ProjectX.Views
         // It returns true if the username is already taken, otherwise it returns false.
         private bool CheckUsername(string username)
         {
-            var usersCollection = _database.GetCollection<BsonDocument>("Users");
+            var usersCollection = _database.GetCollection<BsonDocument>("users");
 
-            var filter = Builders<BsonDocument>.Filter.Eq("Username", username);
+            var filter = Builders<BsonDocument>.Filter.Eq("username", username);
             var count = usersCollection.CountDocuments(filter);
 
             return count > 0; // Username exists if count > 0
@@ -48,16 +48,16 @@ namespace ProjectX.Views
         // It returns true if the registration is successful, otherwise it returns false.
         private bool Register(string username, string apiKey, string password)
         {
-            var usersCollection = _database.GetCollection<BsonDocument>("Users");
+            var usersCollection = _database.GetCollection<BsonDocument>("users");
 
             // Hash the password using bcrypt
             string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
 
             var document = new BsonDocument
             {
-                { "Username", username },
-                { "ApiKey", apiKey },
-                { "Password", hashedPassword }
+                { "username", username },
+                { "apikey", apiKey },
+                { "password", hashedPassword }
             };
 
             try

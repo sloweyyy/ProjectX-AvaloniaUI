@@ -9,7 +9,8 @@ public class User
     [BsonRepresentation(BsonType.ObjectId)]
     public string Id { get; set; }
 
-    public string Username { get; set; }
-    public string Password { get; set; }
-    public string ApiKey { get; set; }
+    public string username { get; set; }
+    public string password { get; set; }
+    public string apikey { get; set; }
+    public bool __v { get; set; }
 }

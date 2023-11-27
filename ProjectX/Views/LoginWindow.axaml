@@ -14,8 +14,8 @@
                HorizontalAlignment="Center" />
 
         <!-- Existing User Selection -->
-        <Label Content="Chọn Tài Khoản:" FontWeight="Bold" Margin="30,0,30,10" />
-        <ComboBox x:Name="UserComboBox" Margin="30,0,30,10" Foreground="#d8d9de" Width="300" HorizontalAlignment="Left" />
+        <Label Content="Nhập Tài Khoản:" FontWeight="Bold" Margin="30,0,30,10" />
+        <TextBox x:Name="UsernameTextBox" Margin="30,0,30,10" Foreground="#d8d9de" Width="300" HorizontalAlignment="Left" />
 
         <!-- Password Input -->
         <Label Content="Nhập Mật Khẩu:" FontWeight="Bold" Margin="30,0,30,10" Width="300" />

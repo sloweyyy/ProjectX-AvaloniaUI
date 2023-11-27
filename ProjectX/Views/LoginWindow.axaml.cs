@@ -12,7 +12,6 @@ namespace ProjectX.Views
         {
             InitializeComponent();
             _usersCollection = GetMongoCollection(); // Initialize the MongoDB collection
-            LoadUsers();
         }
 
         private IMongoCollection<User> GetMongoCollection()
@@ -25,19 +24,25 @@ namespace ProjectX.Views
             var client = new MongoClient(connectionString);
             var database = client.GetDatabase(databaseName);
 
-            return database.GetCollection<User>("Users");
+            return database.GetCollection<User>("users");
         }
 
         private void CheckLogin_Click(object sender, RoutedEventArgs e)
         {
-            var selectedUsername = UserComboBox.SelectedItem as string;
+            var selectedUsername = UsernameTextBox.Text;
             var enteredPassword = PasswordBox.Text;
 
             if (selectedUsername != null && !string.IsNullOrEmpty(enteredPassword))
             {
-                User user = GetUser(selectedUsername);
+                var user = GetUser(selectedUsername);
 
-                if (VerifyPassword(enteredPassword, user.Password))
+                if (user == null)
+                {
+                    ShowMessage("Lỗi", "Sai tên tài khoản hoặc mật khẩu.");
+                    return;
+                }
+
+                if (VerifyPassword(enteredPassword, user.password))
                 {
                     // Password is valid, grant access
 
@@ -63,7 +68,7 @@ namespace ProjectX.Views
 
         private User GetUser(string username)
         {
-            var filter = Builders<User>.Filter.Eq(u => u.Username, username);
+            var filter = Builders<User>.Filter.Eq(u => u.username, username);
             return _usersCollection.Find(filter).FirstOrDefault();
         }
 
@@ -72,18 +77,6 @@ namespace ProjectX.Views
             return BCrypt.Net.BCrypt.Verify(enteredPassword, storedPasswordHash);
         }
 
-        private void LoadUsers()
-        {
-            UserComboBox.Items.Clear();
-            var usernames = _usersCollection.Find(Builders<User>.Filter.Empty)
-                .Project(u => u.Username)
-                .ToList();
-
-            foreach (var username in usernames)
-            {
-                UserComboBox.Items.Add(username);
-            }
-        }
 
         private void OpenRegisterForm_Click(object sender, RoutedEventArgs e)
         {
