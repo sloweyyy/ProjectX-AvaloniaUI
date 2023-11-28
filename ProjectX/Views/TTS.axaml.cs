@@ -48,7 +48,7 @@ public partial class TexttoSpeak : Window
         var apiKey = GetApiKeyByUsername(username); // Sử dụng hàm để lấy apiKey từ cơ sở dữ liệu
         Apikey.Text = apiKey;
         ThreadUpdateUI = new Thread(() => UpdateUI());
-        ThreadUpdateUI.IsBackground = true;
+        ThreadUpdateUI.IsBackground = false;
         ThreadUpdateUI.Start();
         var client = new MongoClient(connectionString);
         var database = client.GetDatabase("ProjectX");
