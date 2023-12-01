@@ -1,11 +1,13 @@
-﻿<Window xmlns="https://github.com/avaloniaui"
+<Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Class="ProjectX.TexttoSpeak"
         Title="TTS" Width="728" Height="377"
-        Background="#202025"
         CanResize="False"
         WindowStartupLocation="CenterScreen"
-        Icon="/Assets/AppIcon.ico">
+        Icon="/Assets/AppIcon.ico"
+        TransparencyLevelHint="AcrylicBlur"
+        Background="Transparent"
+        ExtendClientAreaToDecorationsHint="True">
 
     <Grid x:Name="Back" Height="337" VerticalAlignment="Top">
         <Grid.ColumnDefinitions>
@@ -14,16 +16,20 @@
 
         </Grid.ColumnDefinitions>
 
-        <Label Content="Giọng:" HorizontalAlignment="Left" Margin="7,115,0,10" VerticalAlignment="Top" Height="27" Foreground="White" FontFamily="Segoe UI Semibold" Width="51" />
-        <ComboBox x:Name="Nguoidoc" HorizontalAlignment="Left" Margin="0,115,0,10" VerticalAlignment="Top" Width="145" Foreground="White" FontFamily="Segoe UI Semibold" Height="25" Grid.ColumnSpan="2" Grid.Column="1">
+        <Label Content="Giọng:" HorizontalAlignment="Left" Margin="7,115,0,10" VerticalAlignment="Top" Height="27"
+               Foreground="White" FontFamily="Segoe UI Semibold" Width="51" />
+        <ComboBox x:Name="Nguoidoc" HorizontalAlignment="Left" Margin="0,115,0,10" VerticalAlignment="Top" Width="145"
+                  Foreground="White" FontFamily="Segoe UI Semibold" Height="25" Grid.ColumnSpan="2" Grid.Column="1">
             <ComboBoxItem Content="Nữ miền Bắc" HorizontalAlignment="Left" Width="118" />
             <ComboBoxItem Content="Nam miền Bắc" HorizontalAlignment="Left" Width="118" />
             <ComboBoxItem Content="Nữ miền Nam" IsSelected="True" HorizontalAlignment="Left" Width="118" />
             <ComboBoxItem Content="Nam miền Nam" IsSelected="True" HorizontalAlignment="Left" Width="118" />
         </ComboBox>
         <!-- Setting -->
-        <Label Grid.Column="0" Content="Tốc độ :" HorizontalAlignment="Left" Margin="7,145,0,10" VerticalAlignment="Top" Height="27" Foreground="White" FontFamily="Segoe UI Semibold" Width="51" />
-        <ComboBox x:Name="Tocdo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Margin="0,145,0,0" Foreground="White" FontFamily="Segoe UI Semibold" Height="25" Grid.ColumnSpan="2" Grid.Column="1">
+        <Label Grid.Column="0" Content="Tốc độ :" HorizontalAlignment="Left" Margin="7,145,0,10"
+               VerticalAlignment="Top" Height="27" Foreground="White" FontFamily="Segoe UI Semibold" Width="51" />
+        <ComboBox x:Name="Tocdo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Margin="0,145,0,0"
+                  Foreground="White" FontFamily="Segoe UI Semibold" Height="25" Grid.ColumnSpan="2" Grid.Column="1">
             <ComboBoxItem Content="Bình thường(1.0)" IsSelected="True" HorizontalAlignment="Left" Width="118" />
             <ComboBoxItem Content="Rất chậm(0.8)" HorizontalAlignment="Left" Width="145" />
             <ComboBoxItem Content="Chậm(0.9)" HorizontalAlignment="Left" Width="145" />
@@ -52,7 +58,7 @@
         <!-- Textbox -->
         <TextBox Margin="150,0,10,0" TextWrapping="Wrap" AcceptsReturn="True" x:Name="Text" Foreground="#FFFFFF"
                  Text="Nhập văn bản ở đây" BorderBrush="#FFFAFAFA" Background="#41414b" Height="250" Width="457"
-                 VerticalAlignment="Center" Grid.ColumnSpan="2" Grid.Column="2">
+                 VerticalAlignment="Center" Grid.ColumnSpan="2" Grid.Column="2" FontFamily="Montserrat">
 
             <TextBox.CaretBrush>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -88,4 +94,5 @@
                  Text="(EMPTY)" VerticalAlignment="Top" Width="215" Foreground="White" Grid.ColumnSpan="3"
                  Grid.Column="0" />
     </Grid>
+
 </Window>

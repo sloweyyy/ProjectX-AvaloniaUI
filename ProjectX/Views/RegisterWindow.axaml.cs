@@ -117,9 +117,9 @@ namespace ProjectX.Views
         private void BackToLoginButton_Click(object sender, RoutedEventArgs e)
         {
             // Close the current window and open the login window
-            this.Close();
             LoginWindow loginWindow = new LoginWindow();
             loginWindow.Show();
+            this.Close();
         }
 
         private async Task<bool> CheckKeyAsync(string key)

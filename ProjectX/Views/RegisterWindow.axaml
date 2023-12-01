@@ -1,8 +1,10 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="RegisterWindow" Width="364" Height="250"
+        Title="RegisterWindow" Width="364" Height="320"
         x:Class="ProjectX.Views.RegisterWindow"
-        Background="#202025"
+        TransparencyLevelHint="AcrylicBlur"
+        Background="Transparent"
+        ExtendClientAreaToDecorationsHint="True"
         WindowStartupLocation="CenterScreen">
     <Grid Margin="10">
         <Grid.RowDefinitions>
@@ -16,7 +18,7 @@
         </Grid.RowDefinitions>
 
         <TextBlock Text="Đăng ký" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16"
-                   FontWeight="Bold" Foreground="White" />
+                   FontWeight="Bold" Foreground="White" Padding="0,20,0,10" />
         <TextBlock Text="Username:" Grid.Row="1" VerticalAlignment="Center" />
         <TextBox Name="UsernameTextBox" Grid.Row="2" Margin="0,5" VerticalAlignment="Center" Foreground="#d8d9de" />
 
@@ -28,8 +30,11 @@
         <TextBlock Text="API Key:" Grid.Row="5" VerticalAlignment="Center" />
         <TextBox Name="ApiKeyTextBox" Grid.Row="6" Margin="0,5,0,0" VerticalAlignment="Top" Foreground="#d8d9de" />
 
-        <Button Content="Đăng ký" Grid.Row="6" Click="RegisterButton_Click" Margin="0,40,0,0" VerticalAlignment="Top"
+        <Button Content="Đăng ký" Grid.Row="6" Click="RegisterButton_Click" Margin="0,50,0,0" VerticalAlignment="Top"
                 HorizontalAlignment="Center" Width="144" Background="#202123" BorderBrush="#ea4335"
+                HorizontalContentAlignment="Center" />
+        <Button Content="Đăng nhập" Grid.Row="6" Click="BackToLoginButton_Click" Margin="0,90,0,0" VerticalAlignment="Top"
+                HorizontalAlignment="Center" Width="144" Background="#202123" BorderBrush="#4285f4"
                 HorizontalContentAlignment="Center" />
 
     </Grid>

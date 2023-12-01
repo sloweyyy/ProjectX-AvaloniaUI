@@ -260,15 +260,6 @@ public partial class TexttoSpeak : Window
     }
 
 
-    // private void Grid_PointerPressed(object sender, PointerPressedEventArgs e)
-    // {
-    //     if (e.GetCurrentPoint(this).Properties.IsLeftButtonPressed)
-    //     {
-    //         this.BeginMoveDrag(e);
-    //     }
-    // }
-
-
     public static string StringBetween(string text, string start, string end)
     {
         int startIndex = text.IndexOf(start, StringComparison.Ordinal);

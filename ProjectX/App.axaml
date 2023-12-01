@@ -6,5 +6,9 @@
 
     <Application.Styles>
         <FluentTheme />
+        <Style Selector="TextBox">
+            <Setter Property="FontFamily" Value="https://fonts.googleapis.com/css2?family=Montserrat&amp;family=Roboto&amp;display=swap"/>
+        </Style>
+
     </Application.Styles>
 </Application>
