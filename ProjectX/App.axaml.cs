@@ -18,12 +18,12 @@ namespace ProjectX
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
                 // Create and show the LoginWindow
-                LoginWindow loginWindow = new LoginWindow();
-                loginWindow.Show();
+                // LoginWindow loginWindow = new LoginWindow();
+                // loginWindow.Show();
                 // TexttoSpeak mainWindow = new TexttoSpeak("hi");
                 // mainWindow.Show();
-
-
+                DeepfakeDetect mainWindow = new DeepfakeDetect();
+                mainWindow.Show();
                 // Set the main window's DataContext, but don't show it yet
             }
             else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform)
